@@ -33,4 +33,8 @@ class StringCalculatorTest < Minitest::Test
   def test_add_with_negative_number
     assert_raises(RuntimeError, 'negative numbers not allowed -1') { @calculator.add('-1') }
   end
+
+  def test_add_with_multiple_negative_numbers
+    assert_raises(RuntimeError, 'negative numbers not allowed -1,-2') { @calculator.add('-1,-2') }
+  end
 end
