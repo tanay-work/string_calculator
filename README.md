@@ -68,6 +68,17 @@ cal.add('-1,-2')
 # Output: negative numbers not allowed -1,-2
 ```
 
+Number bigger than 1000 are skipped
+```ruby
+result = cal.add('2,1001')
+puts result # Output: 2
+```
+
+```ruby
+result = cal.add("//;\n1;2;3;4;\n\n\n;0\n\n\n;5;0;1002;9874;4444;5")
+puts result # Output: 20
+```
+
 Handle delimiter of any length
 ```ruby
 result = cal.add("//[***]\n1***2***3")
