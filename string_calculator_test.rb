@@ -23,6 +23,6 @@ class StringCalculatorTest < Minitest::Test
   end
 
   def test_add_with_newlines
-    assert_equal 6, @calculator.add("1\n2,3")
+    assert_equal 15, @calculator.add("1\n\n\n\n\n2,3\n\n\n4,5\n")
   end
 end
