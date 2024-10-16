@@ -5,8 +5,14 @@ class StringCalculator
   def add(input)
     return 0 if input.empty?
 
-    numbers = input.gsub("\n", ',') # replace new lines with commas
-    numbers_array = numbers.split(',').map(&:to_i)
-    numbers_array.sum
+    # delimiter condition
+    if input.start_with?("//")
+      delimiter = input[2]
+      input = input[4..-1]
+      input = input.gsub(delimiter, ",")
+    end
+
+    input = input.gsub("\n", ",")
+    input.split(',').map(&:to_i).sum
   end
 end
