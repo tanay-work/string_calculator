@@ -10,4 +10,8 @@ class StringCalculatorTest < Minitest::Test
   def test_add_empty_string
     assert_equal 0, @calculator.add("")
   end
+
+  def test_add_single_number
+    assert_equal 1, @calculator.add("1")
+  end
 end
