@@ -6,6 +6,7 @@ A Ruby project which implements a string calculator with the following features:
 * Return the sum of input numbers as an integer.
 * Accept new lines between numbers.
 * Accept custom delimiters specified at start of the string.
+* Throws an exception for negative numbers.
 
 ## Ruby Version
 * Ruby-3.2.0
