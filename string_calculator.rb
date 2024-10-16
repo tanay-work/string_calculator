@@ -9,7 +9,11 @@ class StringCalculator
 
     # delimiter condition
     if input.start_with?('//')
-      delimiter = input.match(%r{//(.)\n})[1] # extract custom delimiter from the input
+      delimiter = if input.match?(%r{//\[(.*?)\]\n}) # Check if delimiter is in brackets
+                    input.match(%r{//\[(.*?)\]\n})[1]
+                  else
+                    input.match(%r{//(.)\n})[1] # Extract single-character delimiter
+                  end
     end
 
     input = input.gsub(%r{//[^\n]+\n}, '')
