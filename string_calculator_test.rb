@@ -25,4 +25,8 @@ class StringCalculatorTest < Minitest::Test
   def test_add_with_newlines
     assert_equal 15, @calculator.add("1\n\n\n\n\n2,3\n\n\n4,5\n")
   end
+
+  def test_add_with_custom_delimiter
+    assert_equal 3, @calculator.add("//;\n1;2")
+  end
 end
