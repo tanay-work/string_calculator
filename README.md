@@ -43,7 +43,7 @@ puts result  # Output: 6
 Handle multiple new lines
 ```ruby
 result = cal.add("1\n2,3")
-puts result # Output => 6
+puts result # Output: 6
 ```
 
 ```ruby
@@ -66,4 +66,10 @@ cal.add('-1')
 ```ruby
 cal.add('-1,-2')
 # Output: negative numbers not allowed -1,-2
+```
+
+Handle delimiter of any length
+```ruby
+result = cal.add("//[***]\n1***2***3")
+puts result # Output: 6
 ```
