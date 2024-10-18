@@ -53,4 +53,29 @@ class StringCalculatorTest < Minitest::Test
   def test_add_with_multiple_delimiters
     assert_equal 6, @calculator.add("//[*][%]\n1*2%3")
   end
+
+  # Test case for multiple delimiters with lengths longer than one character
+  def test_add_with_multiple_delimiters_of_varying_length
+    assert_equal 6, @calculator.add("//[***][%%]\n1***2%%3")
+  end
+
+  # Test case with longer delimiters and different patterns
+  def test_add_with_longer_delimiters_and_newline
+    assert_equal 10, @calculator.add("//[##][!!]\n1##2!!3\n4")
+  end
+
+  # Test case with negative number and multiple delimiters
+  def test_add_with_negative_numbers_and_multiple_long_delimiters
+    assert_raises(RuntimeError, 'negative numbers not allowed -2') { @calculator.add("//[***][%%]\n1***-2%%3") }
+  end
+
+  # Test case ignoring numbers greater than 1000 with multiple long delimiters
+  def test_add_with_large_numbers_and_multiple_long_delimiters
+    assert_equal 6, @calculator.add("//[***][%%]\n1***2%%1001***3")
+  end
+
+  # Test case using multiple different delimiters with longer lengths
+  def test_add_with_variety_of_delimiters
+    assert_equal 10, @calculator.add("//[***][#][!!]\n1***2#3!!4")
+  end
 end
