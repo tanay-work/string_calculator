@@ -7,6 +7,9 @@ A Ruby project which implements a string calculator with the following features:
 * Accept new lines between numbers.
 * Accept custom delimiters specified at start of the string.
 * Throws an exception for negative numbers.
+* Number bigger than 1000 are skipped.
+* Handle multiple delimiters of any length
+
 
 ## Installation and Usage
 
