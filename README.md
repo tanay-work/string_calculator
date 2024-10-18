@@ -84,3 +84,20 @@ Handle delimiter of any length
 result = cal.add("//[***]\n1***2***3")
 puts result # Output: 6
 ```
+
+Handle multiple delimiters
+```ruby
+result = cal.add("//[***][%%]\n1***2%%3")
+puts result # Output: 6
+```
+
+Handle multiple delimiters of any length
+```ruby
+result = cal.add("//[***][%%]\n1***2%%3")
+puts result # Output: 6
+```
+
+```ruby
+result = cal.add("//[##][!!]\n1##2!!3\n4")
+puts result # Output: 10
+```
