@@ -5,29 +5,37 @@ class StringCalculator
   def add(input)
     return 0 if input.empty?
 
-    current_delimiter = delimiter(input)
+    current_delimiters = delimiters(input)
 
+    # Remove the custom delimiter declaration from the input
     input = input.gsub(%r{//[^\n]+\n}, '')
-    input.gsub!("\n", current_delimiter)
-    numbers = input.split(current_delimiter.to_s).map(&:to_i)
 
+    # Replace newlines with the first delimiter
+    input.gsub!("\n", current_delimiters.first)
+
+    # Split using all delimiters
+    numbers = input.split(Regexp.union(current_delimiters)).map(&:to_i)
+
+    # Check for negative numbers
     negative_numbers = numbers.select(&:negative?)
     raise "negative numbers not allowed #{negative_numbers.join(',')}" if negative_numbers.any?
 
-    numbers.select { |number| number <= 1000 }.sum # ignore numbers > 1000
+    # Ignore numbers > 1000
+    numbers.select { |number| number <= 1000 }.sum
   end
 
   private
 
-  def delimiter(input)
+  def delimiters(input)
     if input.start_with?('//')
-      if input.match?(%r{//\[(.*?)\]\n}) # Check if delimiter is in brackets
-        input.match(%r{//\[(.*?)\]\n})[1]
+      # Check for multiple delimiters enclosed in brackets
+      if input.match?(%r{//\[(.*?)\]\n})
+        input.scan(%r{\[(.*?)\]}).flatten # Extract all delimiters
       else
-        input.match(%r{//(.)\n})[1] # Extract single-character delimiter
+        [input.match(%r{//(.)\n})[1]] # Single character delimiter
       end
     else
-      ',' # default delimiter
+      [','] # Default delimiter
     end
   end
 end
