@@ -19,9 +19,13 @@ class StringCalculator
     # Check for negative numbers
     negative_numbers = numbers.select(&:negative?)
     raise "negative numbers not allowed #{negative_numbers.join(',')}" if negative_numbers.any?
-
     # Ignore numbers > 1000
-    numbers.select { |number| number <= 1000 }.reduce(current_delimiters.first == '*' ? :* : :+)
+    numbers = numbers.select { |number| number <= 1000 }
+    
+    numbers = numbers.select(&:odd?) if current_delimiters.first == 'o'
+    
+    numbers.reduce(current_delimiters.first == '*' ? :* : :+)
+
   end
 
   private

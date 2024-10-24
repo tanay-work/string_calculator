@@ -91,4 +91,8 @@ class StringCalculatorTest < Minitest::Test
     assert_equal 4, @calculator.add("//o\n1o2o3o4")
   end
 
+  def test_add_with_custom_delimiter
+    assert_equal 9, @calculator.add("//o\n1o2o3o4o5")
+  end
+
 end
