@@ -21,7 +21,7 @@ class StringCalculator
     raise "negative numbers not allowed #{negative_numbers.join(',')}" if negative_numbers.any?
 
     # Ignore numbers > 1000
-    numbers.select { |number| number <= 1000 }.sum
+    numbers.select { |number| number <= 1000 }.reduce(current_delimiters.first == '*' ? :* : :+)
   end
 
   private
@@ -38,4 +38,5 @@ class StringCalculator
       [','] # Default delimiter
     end
   end
+
 end

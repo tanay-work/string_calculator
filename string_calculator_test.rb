@@ -78,4 +78,13 @@ class StringCalculatorTest < Minitest::Test
   def test_add_with_variety_of_delimiters
     assert_equal 10, @calculator.add("//[***][#][!!]\n1***2#3!!4")
   end
+
+  def test_add_with_custom_delimiter
+    assert_equal 24, @calculator.add("//*\n1*2*3*4")
+  end
+
+  def test_add_with_custom_delimiter
+    assert_equal 240, @calculator.add("//*\n1*2*3*4*10")
+  end
+
 end
