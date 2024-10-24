@@ -87,4 +87,8 @@ class StringCalculatorTest < Minitest::Test
     assert_equal 240, @calculator.add("//*\n1*2*3*4*10")
   end
 
+  def test_add_with_custom_delimiter
+    assert_equal 4, @calculator.add("//o\n1o2o3o4")
+  end
+
 end
