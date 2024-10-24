@@ -104,3 +104,15 @@ puts result # Output: 6
 result = cal.add("//[##][!!]\n1##2!!3\n4")
 puts result # Output: 10
 ```
+
+Multiply if customer delimiter is *
+```ruby
+result = cal.add("//*\n1*2*3*4*10")
+puts result # output: 240
+```
+
+Only add odd numbers of customer delimiter is 'o'
+```ruby
+result = cal.add("//o\n1o2o3o4o5")
+puts result # Output: 9
+```
